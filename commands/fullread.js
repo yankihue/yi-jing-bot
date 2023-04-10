@@ -2,8 +2,8 @@ const { SlashCommandBuilder } = require("discord.js");
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("read")
-    .setDescription("Does a Yi Jing reading."),
+    .setName("fullread")
+    .setDescription("Does a lengthy, opinionated Yi Jing reading."),
   async execute(interaction) {
     const hexagrams = require("../hexagrams");
     const resultingText = [""];
@@ -29,8 +29,10 @@ module.exports = {
         result.name.en +
         " | " +
         result.name.zh
-      }  
-      ${label}`;
+      } + ${" (" + label + ")"}
+      ${result.image}
+      ${"Judgment: "}
+      ${result.judgment}`;
 
       resultingText.push(resultString);
     };
