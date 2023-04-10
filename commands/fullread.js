@@ -29,7 +29,7 @@ module.exports = {
         result.name.en +
         " | " +
         result.name.zh
-      } + ${" (" + label + ")"}
+      } ${" (" + label + ")"}
       ${result.image}
       ${"Judgment: "}
       ${result.judgment}`;
