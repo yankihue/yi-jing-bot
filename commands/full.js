@@ -6,7 +6,7 @@ module.exports = {
     .setDescription("Does a Yi Jing reading."),
   async execute(interaction) {
     const hexagrams = require("../hexagrams");
-
+    const resultingText = [""];
     // * Configures options to pass for CLI
 
     const toss = () => {
@@ -20,11 +20,11 @@ module.exports = {
 
     const logFormat = (type, label) => {
       const result = locateHexagram(type);
-      console.log(`${"Hexagram " + result.number}
+      const resultString = `${"Hexagram " + result.number}
       ${label}
       ${result.symbol}
-      ${result.name.en + " | " + result.name.zh}`);
-      return result;
+      ${result.name.en + " | " + result.name.zh}`;
+      resultingText.push(resultString);
     };
 
     const generateHexagram = () => {
@@ -72,8 +72,6 @@ module.exports = {
     };
     const generatedHexagram = generateHexagram();
 
-    await interaction.reply(
-      `This command was run by ${generatedHexagram}, who joined on ${interaction.member.joinedAt}.`
-    );
+    await interaction.reply(`${resultingText}`);
   },
 };
