@@ -20,7 +20,7 @@ module.exports = {
 
     const logFormat = (type, label) => {
       const result = locateHexagram(type);
-      const resultString = `${"Hexagram " + result.number}
+      const resultString = `${"\nHexagram " + result.number}
       ${label}
       ${result.symbol}
       ${result.name.en + " | " + result.name.zh}`;
