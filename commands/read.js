@@ -20,10 +20,18 @@ module.exports = {
 
     const logFormat = (type, label) => {
       const result = locateHexagram(type);
-      const resultString = `${"\nHexagram " + result.number}
-      ${label}
-      ${result.symbol}
-      ${result.name.en + " | " + result.name.zh}`;
+      const resultString = `${
+        "\nHexagram " +
+        result.number +
+        ":" +
+        result.symbol +
+        " - " +
+        result.name.en +
+        " | " +
+        result.name.zh
+      }  
+      ${label}`;
+
       resultingText.push(resultString);
     };
 
@@ -72,6 +80,7 @@ module.exports = {
     };
     const generatedHexagram = generateHexagram();
 
+    resultingText.shift();
     await interaction.reply(`${resultingText}`);
   },
 };
